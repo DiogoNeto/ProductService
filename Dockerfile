@@ -1,4 +1,3 @@
-# Dockerfile
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 80
@@ -8,9 +7,9 @@ WORKDIR /src
 COPY . .
 
 RUN dotnet restore
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish -c Release -o /out
 
 FROM base AS final
 WORKDIR /app
-COPY --from=build /app/publish .
+COPY --from=build /out .
 ENTRYPOINT ["dotnet", "XPTOProductService.dll"]
