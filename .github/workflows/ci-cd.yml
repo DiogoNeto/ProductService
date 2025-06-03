@@ -26,7 +26,7 @@ jobs:
       run: dotnet build ProductService.sln --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test ProductService.Tests/ProductService.Tests.csproj --no-build --verbosity normal
+      run: dotnet test ProductService.sln --configuration Release --verbosity normal
 
     - name: Docker Login
       uses: docker/login-action@v3
